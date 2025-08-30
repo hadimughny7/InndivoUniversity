@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/img/Logo Inndivo.png"
+import Logo from "../../assets/img/Logo Inndivo.png"
 
 
 const Footer: React.FC = () => {

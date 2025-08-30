@@ -1,7 +1,7 @@
 // HomePage.tsx
 import React, { useState } from "react";
-import BackgroundSection from "../assets/img/Background.png"; // ganti sesuai path gambar
-import SideImage from "../assets/img/SidePersons.png";   // ganti sesuai path gambar
+import BackgroundSection from "../../../assets/img/Background.png";
+import SideImage from "../../../assets/img/SidePersons.png";
 
 interface FAQItem {
     question: string;

@@ -37,7 +37,7 @@ const TestimonialSection: React.FC = () => {
 
                         {/* Content */}
                         <div className="testimonial-content w-full lg:w-[539px] h-auto lg:h-[391px] mb-8 lg:mb-0 order-1 lg:order-2">
-                            <h1 className="text-[48px] font-bold mb-4">
+                            <h1 className="text-3xl sm:text-4xl md:text-[48px] font-bold mb-4">
                                 Trusted by <br />
                                 <span>
                                     Awesome{" "}
@@ -52,7 +52,7 @@ const TestimonialSection: React.FC = () => {
                                 <span className="font-normal text-gray-600">Founder Mengasi Rejeki</span>
                             </p>
 
-                            <p className="quote text-[24px] font-normal text-gray-700 mb-8">
+                            <p className="quote text-1xl sm:text-2xl md:text-[24px] font-normal text-gray-700 mb-8">
                                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                                 dolore magna aliqua."
                             </p>

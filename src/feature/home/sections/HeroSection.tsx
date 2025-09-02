@@ -34,7 +34,6 @@ const HeroSection: React.FC = () => {
                         className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto rounded-2xl"
                     />
                 </div>
-
                 <div className="max-w-2xl space-y-4 text-left lg:text-left">
                     <h1 className="font-bold text-gray-900 leading-snug text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                         <span className="block lg:hidden">
@@ -78,7 +77,6 @@ const HeroSection: React.FC = () => {
                     </div>
                 </div>
             </section>
-
             </div>
   );
 };

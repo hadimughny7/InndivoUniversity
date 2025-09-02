@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../../assets/img/Logo Inndivo.png";
 
@@ -9,7 +10,9 @@ const Navbar: React.FC = () => {
         <nav className="relative flex justify-between items-center px-4 md:px-6 py-4 shadow-md bg-white">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-                <img src={Logo} alt="Logo" className="h-8 md:h-9" />
+                <Link to="/">
+                    <img src={Logo} alt="Logo" className="h-8 md:h-9" />
+                </Link>
             </div>
 
             {/* Mobile Hamburger */}
@@ -25,7 +28,7 @@ const Navbar: React.FC = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-6">
-                <a href="#" className="text-sm hover:text-orange-600">Explore</a>
+                <Link to="/explore" className="text-sm hover:text-orange-600">Explore</Link>
                 <a href="#" className="text-sm hover:text-orange-600">Service</a>
                 <a href="#" className="text-sm hover:text-orange-600">Community</a>
                 <a href="#" className="text-sm hover:text-orange-600">About</a>
@@ -54,7 +57,7 @@ const Navbar: React.FC = () => {
                         }}
                         className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-start px-4 py-4 space-y-3 md:hidden z-50 origin-top"
                     >
-                        <a href="#" className="text-sm hover:text-orange-600">Explore</a>
+                        <Link to="/explore" className="text-sm hover:text-orange-600">Explore</Link>
                         <a href="#" className="text-sm hover:text-orange-600">Service</a>
                         <a href="#" className="text-sm hover:text-orange-600">Community</a>
                         <a href="#" className="text-sm hover:text-orange-600">About</a>

@@ -22,7 +22,7 @@ interface Course {
   category: string;
   author: string;
   role: string;
-  price: string;
+  price: number;
   authorImg: string;
 }
 
@@ -38,7 +38,7 @@ const COURSES: Course[] = [
     category: "Digital Marketing",
     author: "Michael Jane",
     role: "Digital Marketer",
-    price: "Rp 175.000",
+    price: 175000,
     authorImg: CardCourse,
   },
   {
@@ -52,7 +52,7 @@ const COURSES: Course[] = [
     category: "Programming & Tech",
     author: "Sarah Connor",
     role: "Software Engineer",
-    price: "Rp 250.000",
+    price: 250000,
     authorImg: CardCourse,
   },
   {
@@ -66,7 +66,7 @@ const COURSES: Course[] = [
     category: "Graphics & Design",
     author: "Alex Turner",
     role: "Graphic Designer",
-    price: "Rp 150.000",
+    price: 150000,
     authorImg: CardCourse,
   },
   {
@@ -80,35 +80,7 @@ const COURSES: Course[] = [
     category: "Business & Management",
     author: "Linda Wong",
     role: "Business Coach",
-    price: "Rp 200.000",
-    authorImg: CardCourse,
-  },
-  {
-    img: CardCourse,
-    title: "Business Management Fundamentals",
-    rating: "4.4",
-    date: "15 Juni 2025",
-    description:
-      "Dasar-dasar manajemen bisnis untuk pemula dan calon entrepreneur.",
-    level: "Beginner",
-    category: "Business & Management",
-    author: "Linda Wong",
-    role: "Business Coach",
-    price: "Rp 200.000",
-    authorImg: CardCourse,
-  },
-  {
-    img: CardCourse,
-    title: "Business Management Fundamentals",
-    rating: "4.4",
-    date: "15 Juni 2025",
-    description:
-      "Dasar-dasar manajemen bisnis untuk pemula dan calon entrepreneur.",
-    level: "Beginner",
-    category: "Business & Management",
-    author: "Linda Wong",
-    role: "Business Coach",
-    price: "Rp 200.000",
+    price: 200000,
     authorImg: CardCourse,
   },
 ];
@@ -152,7 +124,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => (
             <p className="text-xs text-gray-500">{course.role}</p>
           </div>
         </div>
-        <p className="text-sm font-bold text-gray-800">{course.price}/ bulan</p>
+        <p className="text-sm font-bold text-gray-800">Rp{course.price.toLocaleString("id-ID")}/ bulan</p>
       </div>
     </div>
   </div>
@@ -160,10 +132,17 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => (
 
 const CourseSection: React.FC = () => {
   const [index, setIndex] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState("Daftar Courses");
   const visibleCount = 3;
 
+  // Filter courses sesuai kategori
+  const filteredCourses =
+    selectedCategory === "Daftar Courses"
+      ? COURSES
+      : COURSES.filter((c) => c.category === selectedCategory);
+
   const handleNext = () => {
-    if (index + visibleCount >= COURSES.length) return;
+    if (index + visibleCount >= filteredCourses.length) return;
     setIndex((prev) => prev + 1);
   };
 
@@ -190,9 +169,16 @@ const CourseSection: React.FC = () => {
             {COURSE_FILTERS.map((label, i) => (
               <button
                 key={i}
-                className="border border-gray-300 text-xs md:text-sm px-3 md:px-4 py-2 
-                rounded-md text-gray-500 hover:bg-[#E92F05] hover:text-white 
-                hover:border-[#E92F05] transition"
+                onClick={() => {
+                  setSelectedCategory(label);
+                  setIndex(0); // reset slider ke awal tiap ganti kategori
+                }}
+                className={`border text-xs md:text-sm px-3 md:px-4 py-2 rounded-md transition 
+                  ${
+                    selectedCategory === label
+                      ? "bg-[#E92F05] text-white border-[#E92F05]"
+                      : "border-gray-300 text-gray-500 hover:bg-[#E92F05] hover:text-white hover:border-[#E92F05]"
+                  }`}
               >
                 {label}
               </button>
@@ -215,7 +201,7 @@ const CourseSection: React.FC = () => {
               className="hidden md:flex gap-6 transition-transform duration-500"
               style={{ transform: `translateX(-${index * 370}px)` }}
             >
-              {COURSES.map((course, i) => (
+              {filteredCourses.map((course, i) => (
                 <div
                   key={i}
                   className={`transition-all duration-500 ${
@@ -228,11 +214,11 @@ const CourseSection: React.FC = () => {
             </div>
 
             <div className="flex md:hidden w-full justify-center mt-4">
-              <CourseCard course={COURSES[index]} />
+              {filteredCourses.length > 0 && <CourseCard course={filteredCourses[index]} />}
             </div>
           </div>
 
-          {index + visibleCount < COURSES.length && (
+          {index + visibleCount < filteredCourses.length && (
             <button
               onClick={handleNext}
               className="absolute -right-6 z-10 p-2 hover:scale-110 transition hidden md:block"

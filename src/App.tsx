@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./feature/home/Home";
-import Explore from "./feature/explore/Explore";  // <- sesuaikan path milikmu
+import Explore from "./feature/explore/Explore";
 
 
 function App() {

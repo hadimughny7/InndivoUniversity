@@ -43,10 +43,11 @@ const HomePage: React.FC = () => {
         <div>
             {/* ===== FAQ Section ===== */}
             <section className="py-16 bg-gradient-radial from-gray-300 to-white">
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 px-4 sm:px-6">
-                    {/* Left Title */}
-                    <div className="flex-1 mb-8 md:mb-0">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                <div className="container mx-auto flex flex-col lg:flex-row items-start gap-8 lg:gap-10 px-4 sm:px-6 md:px-12 py-10">
+
+                    {/* Left Title di atas */}
+                    <div className="flex-1 flex flex-col justify-start">
+                        <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
                             Frequently Asked <br />
                             <span className="bg-gradient-to-r from-red-600 to-yellow-400 bg-clip-text text-transparent">
                                 Questions
@@ -84,6 +85,7 @@ const HomePage: React.FC = () => {
                         ))}
                     </div>
                 </div>
+
             </section>
 
             {/* ===== Banner Section ===== */}

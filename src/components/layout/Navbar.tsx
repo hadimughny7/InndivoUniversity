@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="relative shadow-md bg-white">
-      <div className="max-w-[90%] mx-auto flex justify-between items-center px-4 md:px-6 py-4">
+      <div className="container mx-auto flex justify-between items-center px-4 md:px-6 py-4">
         {/* Logo */}
         <NavLink to="/">
           <img src={Logo} alt="Logo" className="h-8 md:h-9" />

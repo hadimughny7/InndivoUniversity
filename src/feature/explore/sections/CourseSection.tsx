@@ -4,10 +4,11 @@ import CalenderIcon from "../../../assets/icon/Calendar Minimalistic.png";
 import CardCourse from "../../../assets/img/CardCourse.png";
 
 const COURSE_FILTERS = [
-  "Daftar Courses",
+  "Semua Program",
   "Programming & Tech",
   "Graphics & Design",
   "Digital Marketing",
+  "Business & Management",
   "Data",
   "Human Resource",
 ];
@@ -38,7 +39,7 @@ const COURSES: Course[] = [
     category: "Digital Marketing",
     author: "Michael Jane",
     role: "Digital Marketer",
-    price: 175000,
+    price: 250000,
     authorImg: CardCourse,
   },
   {
@@ -60,13 +61,12 @@ const COURSES: Course[] = [
     title: "Graphic Design Essentials",
     rating: "4.6",
     date: "5 Juni 2025",
-    description:
-      "Pelajari prinsip desain grafis dengan Photoshop & Illustrator.",
+    description: "Pelajari prinsip desain grafis dengan Photoshop & Illustrator.",
     level: "Beginner",
     category: "Graphics & Design",
     author: "Alex Turner",
     role: "Graphic Designer",
-    price: 150000,
+    price: 250000,
     authorImg: CardCourse,
   },
   {
@@ -80,7 +80,49 @@ const COURSES: Course[] = [
     category: "Business & Management",
     author: "Linda Wong",
     role: "Business Coach",
-    price: 200000,
+    price: 250000,
+    authorImg: CardCourse,
+  },
+  {
+    img: CardCourse,
+    title: "Business Management Fundamentals",
+    rating: "4.4",
+    date: "15 Juni 2025",
+    description:
+      "Dasar-dasar manajemen bisnis untuk pemula dan calon entrepreneur.",
+    level: "Beginner",
+    category: "Business & Management",
+    author: "Linda Wong",
+    role: "Business Coach",
+    price: 250000,
+    authorImg: CardCourse,
+  },
+  {
+    img: CardCourse,
+    title: "Business Management Fundamentals",
+    rating: "4.4",
+    date: "15 Juni 2025",
+    description:
+      "Dasar-dasar manajemen bisnis untuk pemula dan calon entrepreneur.",
+    level: "Beginner",
+    category: "Data",
+    author: "Linda Wong",
+    role: "Business Coach",
+    price: 250000,
+    authorImg: CardCourse,
+  },
+  {
+    img: CardCourse,
+    title: "Business Management Fundamentals",
+    rating: "4.4",
+    date: "15 Juni 2025",
+    description:
+      "Dasar-dasar manajemen bisnis untuk pemula dan calon entrepreneur.",
+    level: "Beginner",
+    category: "Human Resource",
+    author: "Linda Wong",
+    role: "Business Coach",
+    price: 250000,
     authorImg: CardCourse,
   },
 ];
@@ -124,20 +166,21 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => (
             <p className="text-xs text-gray-500">{course.role}</p>
           </div>
         </div>
-        <p className="text-sm font-bold text-gray-800">Rp{course.price.toLocaleString("id-ID")}/ bulan</p>
+        <p className="text-sm font-bold text-gray-800">
+          Rp {course.price.toLocaleString("id-ID")}/ bulan
+        </p>
       </div>
     </div>
   </div>
 );
 
-const CourseSection: React.FC = () => {
+const CoursesSection: React.FC = () => {
   const [index, setIndex] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState("Daftar Courses");
+  const [selectedCategory, setSelectedCategory] = useState("Semua Program");
   const visibleCount = 3;
 
-  // Filter courses sesuai kategori
   const filteredCourses =
-    selectedCategory === "Daftar Courses"
+    selectedCategory === "Semua Program"
       ? COURSES
       : COURSES.filter((c) => c.category === selectedCategory);
 
@@ -145,91 +188,113 @@ const CourseSection: React.FC = () => {
     if (index + visibleCount >= filteredCourses.length) return;
     setIndex((prev) => prev + 1);
   };
-
   const handlePrev = () => {
     if (index === 0) return;
     setIndex((prev) => prev - 1);
   };
 
   return (
-    <section className="py-8 md:py-16 px-4 md:px-6">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-xl md:text-2xl lg:text-5xl font-semibold mb-4">
-            Eksplorasi Courses Paling Populer
-          </h2>
-          <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-
-        <div className="max-w-6xl mx-auto mt-8 mb-10">
-          <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
-            {COURSE_FILTERS.map((label, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  setSelectedCategory(label);
-                  setIndex(0); // reset slider ke awal tiap ganti kategori
-                }}
-                className={`border text-xs md:text-sm px-3 md:px-4 py-2 rounded-md transition 
-                  ${
-                    selectedCategory === label
+    <section className="section-4 pt-4 sm:pt-6 md:pt-8 lg:pt-12 pb-6 sm:pb-8 md:pb-10 lg:pb-12">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-xl md:text-2xl lg:text-5xl font-semibold mb-4">
+              Eksplorasi Courses Paling Populer
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+          {/* Filter Buttons */}
+          <div className="max-w-6xl mx-auto mt-8">
+            <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
+              {COURSE_FILTERS.map((label, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setSelectedCategory(label);
+                    setIndex(0);
+                  }}
+                  className={`border text-xs md:text-sm px-3 md:px-4 py-2 rounded-md transition ${selectedCategory === label
                       ? "bg-[#E92F05] text-white border-[#E92F05]"
                       : "border-gray-300 text-gray-500 hover:bg-[#E92F05] hover:text-white hover:border-[#E92F05]"
-                  }`}
-              >
-                {label}
-              </button>
-            ))}
+                    }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="relative flex items-center">
-          {index > 0 && (
-            <button
-              onClick={handlePrev}
-              className="absolute -left-6 z-10 p-2 hover:scale-110 transition hidden md:block"
-            >
-              <img src={FloatButton} alt="prev" className="w-9 h-9 rotate-180" />
-            </button>
-          )}
-
-          <div className="overflow-visible w-full">
-            <div
-              className="hidden md:flex gap-6 transition-transform duration-500"
-              style={{ transform: `translateX(-${index * 370}px)` }}
-            >
-              {filteredCourses.map((course, i) => (
-                <div
-                  key={i}
-                  className={`transition-all duration-500 ${
-                    i === index + visibleCount ? "opacity-50 scale-95" : "opacity-100 scale-100"
-                  }`}
-                >
-                  <CourseCard course={course} />
-                </div>
-              ))}
+        {/* Content (slider) */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-10">
+          <div className="relative flex items-center w-full">
+            {/* Tombol Prev */}
+            {index > 0 && (
+              <button
+                onClick={handlePrev}
+                className="absolute -left-6 z-10 p-2 hover:scale-110 transition hidden md:block"
+              >
+                <img
+                  src={FloatButton}
+                  alt="prev"
+                  className="w-9 h-9 rotate-180"
+                />
+              </button>
+            )}
+            {/* Wrapper slider dengan overflow-hidden */}
+            <div className="overflow-hidden w-full">
+              {/* Desktop Slider */}
+              <div
+                className="hidden md:flex gap-6 transition-transform duration-500"
+                style={{ transform: `translateX(-${index * 370}px)` }}
+              >
+                {filteredCourses.map((course, i) => (
+                  <div
+                    key={i}
+                    className={`transition-all duration-500 ${i === index + visibleCount
+                        ? "opacity-50 scale-95"
+                        : "opacity-100 scale-100"
+                      }`}
+                  >
+                    <CourseCard course={course} />
+                  </div>
+                ))}
+              </div>
+              {/* Mobile Single Card */}
+              <div className="flex md:hidden w-full justify-center mt-4">
+                {filteredCourses.length > 0 && (
+                  <CourseCard course={filteredCourses[index]} />
+                )}
+              </div>
             </div>
-
-            <div className="flex md:hidden w-full justify-center mt-4">
-              {filteredCourses.length > 0 && <CourseCard course={filteredCourses[index]} />}
-            </div>
+            {/* Tombol Next */}
+            {index + visibleCount < filteredCourses.length && (
+              <button
+                onClick={handleNext}
+                className="absolute -right-6 z-10 p-2 hover:scale-110 transition hidden md:block"
+              >
+                <img src={FloatButton} alt="next" className="w-9 h-9" />
+              </button>
+            )}
           </div>
+        </div>
 
-          {index + visibleCount < filteredCourses.length && (
-            <button
-              onClick={handleNext}
-              className="absolute -right-6 z-10 p-2 hover:scale-110 transition hidden md:block"
-            >
-              <img src={FloatButton} alt="next" className="w-9 h-9" />
-            </button>
-          )}
+        {/* Button Explore */}
+        <div className="explore-btn text-center mt-8">
+          <a
+            href="#"
+            className="btn-orange-outline inline-block px-6 py-2 border-1 border-[#e92f05] text-[#e92f05] rounded-[8px] hover:bg-[#e92f05] hover:text-white transition"
+          >
+            Eksplor semua kelas
+          </a>
         </div>
       </div>
     </section>
   );
 };
 
-export default CourseSection;
+export default CoursesSection;

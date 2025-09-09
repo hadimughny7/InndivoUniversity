@@ -5,28 +5,25 @@ import BackgroundHeroSection from "../../../assets/img/BgHomeHeroSection.png"
 const TRENDING_TOPICS = ["UI/UX Design", "Digital Marketing", "Human Resource"]
 
 const TrendingTopics: React.FC = () => (
-  <div className="flex flex-wrap gap-2 justify-start">
-    {TRENDING_TOPICS.map((item, index) => (
-      <a
-        key={index}
-        href="#"
-        className="inline-block px-4 py-2 border-2 border-[#e92f05] text-[#e92f05] rounded-xl text-sm font-medium hover:bg-[#f44300] hover:text-white transition"
-      >
-        {item}
-      </a>
-    ))}
-  </div>
+    <div className="flex flex-wrap gap-2 justify-start">
+        {TRENDING_TOPICS.map((item, index) => (
+            <a
+                key={index}
+                href="#"
+                className="inline-block px-4 py-2 border-2 border-[#e92f05] text-[#e92f05] rounded-xl text-sm font-medium hover:bg-[#f44300] hover:text-white transition"
+            >
+                {item}
+            </a>
+        ))}
+    </div>
 );
 
 const HeroSection: React.FC = () => {
-  return (
-    <div>
-    {/* HERO SECTION */}
-            <section
-                id="home"
-                className="flex flex-col lg:flex-row items-center bg-no-repeat bg-cover bg-center relative px-4 sm:px-6 md:px-12 py-10 sm:py-12 md:py-16 lg:py-20"
-                style={{ backgroundImage: `url(${BackgroundHeroSection})` }}
+    return (
+        <section className="section-3 pt-4 sm:pt-6 md:pt-8 lg:pt-12 pb-6 sm:pb-8 md:pb-10 lg:pb-12 bg-white"
             >
+            <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-10 px-4"
+            style={{ backgroundImage: `url(${BackgroundHeroSection})` }}>
                 <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex justify-center">
                     <img
                         src={ContentVisual}
@@ -54,7 +51,7 @@ const HeroSection: React.FC = () => {
 
                     <p className="font-semibold text-gray-700 text-[16px]">Trending : </p>
                     <TrendingTopics />
-                    
+
                     <p className="text-gray-600 text[16px] sm:text-base leading-relaxed">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab labore natus adipisci ullam. Veritatis quas
                         tempora minima laudantium corporis nulla sequi expedita vitae vel nihil eaque magnam consectetur, ratione
@@ -76,9 +73,9 @@ const HeroSection: React.FC = () => {
                         </a>
                     </div>
                 </div>
-            </section>
             </div>
-  );
+        </section>
+    );
 };
 
 export default HeroSection;
